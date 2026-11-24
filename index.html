@@ -175,11 +175,10 @@ footer{background:var(--deep);color:oklch(0.76 0.008 var(--Hn));padding:56px 0 2
   .news-item{grid-template-columns:1fr;gap:2px;padding:10px 0}
 }
 /* mc:layer */
-/* TherapeuticsMD visible layer: sidebar-rail. A 200px navy rail (listing, index, period-labelled facts)
-   runs beside full-bleed split bands; the hero spans the full width above it. 200px keeps the rail
-   strip under the 240px negative-space bar, so every band's content starts flush against the rail. */
+/* TherapeuticsMD visible layer: full-bleed split bands under a full-width hero. Text halves align to the
+   1140px hero wrap; photo and colour-field halves run to the viewport edge. */
 body{font-size:17px}
-h1,h2,h3,.big,.pf-n,.kf dd,.rail-facts dd,.streams text,.chart text,.cash text,.geo-card text{font-variant-numeric:lining-nums tabular-nums}
+h1,h2,h3,.big,.pf-n,.kf dd,.streams text,.chart text,.cash text,.geo-card text{font-variant-numeric:lining-nums tabular-nums}
 h1,h2{font-weight:600;letter-spacing:-.015em} h3{font-weight:600}
 h1{font-size:clamp(2.2rem,4.6vw,3.7rem);line-height:1.04}
 h2{font-size:clamp(1.65rem,2.9vw,2.35rem)}
@@ -233,32 +232,18 @@ sup{font-size:.42em;vertical-align:super;line-height:0;margin-left:1px}
 .pf-s{order:3;font-size:.84rem;line-height:1.5;color:oklch(0.82 0.02 220);margin-top:6px}
 .pf-s a{color:var(--accent-lt)}
 
-/* ---------- rail ---------- */
-.railed{display:grid;grid-template-columns:200px minmax(0,1fr)}
-.rail{position:relative;color:oklch(0.88 0.02 220)}
-.rail-in{position:sticky;top:72px;padding:30px 20px 28px 22px;max-height:calc(100vh - 72px);overflow:auto}
-.rail-tick{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-lt);display:flex;gap:8px;align-items:baseline}
-.rail-tick b{font-family:var(--serif);font-size:1.5rem;letter-spacing:.02em;color:#fff}
-.rail-idx{list-style:none;margin:22px 0 24px;counter-reset:none}
-.rail-idx a{display:flex;gap:10px;align-items:center;min-height:36px;font-family:var(--serif);font-weight:500;font-size:.9rem;color:oklch(0.9 0.015 220);transition:color .2s var(--ease)}
-.rail-idx a span{font-family:var(--mono);font-size:.68rem;color:var(--accent-lt);width:20px}
-.rail-idx a:hover{color:#fff}
-.rail-facts{display:grid;gap:14px;padding:18px 0;border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d)}
-.rail-facts dt{font-family:var(--mono);font-size:.66rem;line-height:1.4;color:oklch(0.80 0.03 220)}
-.rail-facts dd{font-family:var(--serif);font-weight:600;font-size:1.25rem;color:#fff}
-.rail-link{display:flex;align-items:center;gap:8px;min-height:44px;margin-top:14px;font-family:var(--serif);font-weight:600;font-size:.9rem;color:var(--accent-lt)}
-.rail-link:hover{color:#fff}
+
 
 /* ---------- content column ---------- */
 .col{min-width:0}
 .band{padding:clamp(56px,7vw,96px) 0}
 .arw,.btn,.nav-links a{white-space:nowrap}
-.cw{padding-left:20px;padding-right:clamp(24px,4vw,56px)}
+.cw{padding-inline:max(22px,calc((100% - var(--wrap)) / 2))}
 .split2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:min(74vh,660px)}
 .band:has(>.split2:first-child),.band:has(>.photo-head:first-child){padding-top:0}
 .band:has(>.split2:last-child){padding-bottom:0}
-.s-text{padding:clamp(48px,6vw,88px) clamp(28px,4vw,56px) clamp(48px,6vw,88px) 20px;display:flex;flex-direction:column;justify-content:center;min-width:0}
-.s-text.right{padding-left:clamp(28px,4vw,56px);padding-right:clamp(24px,4vw,56px)}
+.s-text{padding:clamp(48px,6vw,88px) clamp(28px,4vw,56px) clamp(48px,6vw,88px) max(22px,calc(100% - var(--wrap) / 2));display:flex;flex-direction:column;justify-content:center;min-width:0}
+.s-text.right{padding-left:clamp(28px,4vw,56px);padding-right:max(22px,calc(100% - var(--wrap) / 2))}
 .s-text h2{margin-bottom:16px}
 .steps{list-style:none;margin-top:26px;display:grid;gap:14px}
 .steps li{display:grid;grid-template-columns:40px 1fr;gap:2px 14px;align-items:start}
@@ -331,7 +316,7 @@ sup{font-size:.42em;vertical-align:super;line-height:0;margin-left:1px}
 .photo-head{position:relative;margin:0;min-height:380px;display:flex;align-items:center;overflow:hidden;background:var(--deep)}
 .photo-head img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 30%}
 .photo-head::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,oklch(0.265 0.064 243.3/.94) 0,oklch(0.265 0.064 243.3/.86) 42%,oklch(0.265 0.064 243.3/0) 72%)}
-.ph-copy{position:relative;z-index:2;max-width:520px;padding:48px 24px}
+.ph-copy{position:relative;z-index:2;box-sizing:content-box;max-width:520px;padding:48px 24px 48px max(22px,calc((100% - var(--wrap)) / 2))}
 .ph-copy h2{color:#fff;margin-bottom:12px} .ph-copy p{color:oklch(0.9 0.02 220)} .ph-copy .eyebrow{color:var(--accent-lt)}
 .photo-head figcaption{position:absolute;z-index:2;right:16px;bottom:12px;font-family:var(--mono);font-size:.66rem;color:#fff;text-shadow:0 1px 3px oklch(0.15 0.05 243/.8)}
 .photo-head :focus-visible{outline-color:var(--accent-lt)}
@@ -414,10 +399,17 @@ table.fin td.num,table.fin th.num{text-align:right}
 @media (min-width:1101px){ #financials .table-scroll>table.fin{min-width:0} }
 
 /* news */
-.news-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,300px);gap:clamp(24px,4vw,48px);padding-left:20px}
+.news-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,300px);gap:clamp(24px,4vw,48px);padding-left:max(22px,calc((100% - var(--wrap)) / 2))}
 #news .news-year{grid-template-columns:minmax(0,1fr);gap:6px}
 .news-copy{padding-right:0;min-width:0}
 .news-copy h2{margin-bottom:24px}
+/* header row: heading left, archive links right (fills the band top beside a short heading) */
+@media (min-width:901px){
+  .news-copy{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,260px);column-gap:clamp(24px,3vw,40px)}
+  .news-copy>*{grid-column:1/-1}
+  .news-copy>.eyebrow,.news-copy>h2{grid-column:1}
+  .news-copy>.fine{grid-column:2;grid-row:1/3;align-self:end;margin:0 0 24px;padding-left:18px;border-left:1px solid var(--line)}
+}
 .news-photo{position:relative;margin:calc(-1 * clamp(56px,7vw,96px)) 0 calc(-1 * clamp(56px,7vw,96px));overflow:hidden;background:var(--deep)}
 .news-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
 .news-photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 12px;font-family:var(--mono);font-size:.64rem;color:#fff;background:linear-gradient(to top,oklch(0.18 0.05 243/.85),oklch(0.18 0.05 243/0))}
@@ -441,11 +433,6 @@ footer{background:var(--deep-2)}
 
 /* ---------- responsive ---------- */
 @media (max-width:1100px){
-  .railed{display:block}
-  .rail-in{position:static;max-height:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;padding:22px 22px}
-  .rail-in nav{display:none}
-  .rail-facts{grid-column:1/-1;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:none;padding-bottom:4px}
-  .rail-link{margin-top:0;justify-self:end}
   .cw,.news-grid{padding-left:22px;padding-right:22px}
   .s-text{padding-left:22px}
 }
@@ -471,9 +458,6 @@ footer{background:var(--deep-2)}
   .proof{grid-template-columns:minmax(0,1fr)}
   .pf,.pf+.pf{padding:18px 0 4px;box-shadow:none}
   .pf+.pf{border-top:1px solid var(--line-d)}
-  .rail-in{grid-template-columns:minmax(0,1fr)}
-  .rail-facts{grid-template-columns:minmax(0,1fr)}
-  .rail-link{justify-self:start}
   .lad-list,.horizon,.contacts{grid-template-columns:minmax(0,1fr)}
   .lad-t1,.lad-t2{font-size:.86rem;padding:0 10px}
   .pin em,.tick em{font-size:.68rem}
@@ -491,6 +475,9 @@ footer{background:var(--deep-2)}
   .c-x,.c-l{font-size:19px} .c-v{font-size:21px} .c-v.sm{font-size:19px} .c-tag{font-size:19px}
   .news-photo{height:220px}
 }
+
+.inv-meta{font-family:var(--mono);font-size:.76rem;letter-spacing:.04em;color:var(--text-mid);margin:-4px 0 22px}
+.inv-meta a{color:var(--accent-ink)}
 /* mc:surface */
 /* Surface system: the royalty statement. A remittance ledger is ruled paper, so the page is too.
    Light stock: wash FIRST (on top), ink LAST (under). Polarity flip: printed navy ruling on white stock,
@@ -528,13 +515,10 @@ footer{background:var(--deep-2)}
   background-repeat:no-repeat,repeat,no-repeat}
 .hero.sec-dark{background-image:repeating-linear-gradient(90deg,transparent 0 55px,var(--sheet-neg) 55px 56px),
                    linear-gradient(160deg,var(--deep) 0,var(--deep-2) 100%)}
-/* the rail column: navy from top to bottom, with the negative statement ruling */
-.rail{background-color:var(--deep-2);background-image:repeating-linear-gradient(to bottom,transparent 0 27px,var(--sheet-neg) 27px 28px)}
 .s-field{background-image:linear-gradient(135deg,oklch(1 0 0/.10) 0,oklch(1 0 0/0) 55%)}
 .s-field.ink{background-image:radial-gradient(70% 60% at 0% 100%,oklch(0.677 0.115 199.9/.35),oklch(0.677 0.115 199.9/0) 70%)}
 .table-scroll{background:var(--card)}
-@media (max-width:1100px){ .rail{background-image:none} }
-@media print{ .sec-white,.sec-tint,.sec-dark,.rail,.s-field{background-image:none} }
+@media print{ .sec-white,.sec-tint,.sec-dark,.s-field{background-image:none} }
 @media (forced-colors:active){ /* backgrounds are dropped; bands fall back to Canvas and the trim rules vanish, which is acceptable */ .s-field{border:1px solid CanvasText} }
 </style>
 </head>
@@ -623,32 +607,7 @@ footer{background:var(--deep-2)}
   </div>
 </section>
 
-<div class="railed">
-  <aside class="rail" aria-label="TherapeuticsMD at a glance">
-    <div class="rail-in">
-      <p class="rail-tick"><span>Nasdaq</span> <b>TXMD</b></p>
-      <nav aria-label="Sections on this page">
-        <ol class="rail-idx">
-          <li><a href="#model"><span>01</span>Royalty model</a></li>
-          <li><a href="#products"><span>02</span>Products</a></li>
-          <li><a href="#partners"><span>03</span>Licensees</a></li>
-          <li><a href="#horizon"><span>04</span>Milestones</a></li>
-          <li><a href="#performance"><span>05</span>Performance</a></li>
-          <li><a href="#financials"><span>06</span>Financials</a></li>
-          <li><a href="#news"><span>07</span>News</a></li>
-          <li><a href="#investors"><span>08</span>Investors</a></li>
-        </ol>
-      </nav>
-      <dl class="rail-facts">
-        <div><dt>Cash, Sep 30, 2026</dt><dd>$10.4M</dd></div>
-        <div><dt>Shares outstanding, Nov 9, 2026</dt><dd>11,574,362</dd></div>
-        <div><dt>Licensees paying royalties</dt><dd>3</dd></div>
-      </dl>
-      <a class="rail-link" href="https://ir.therapeuticsmd.com/email-alerts?utm_source=mediaconsole&amp;utm_medium=landing-page&amp;utm_campaign=therapeuticsmd-ir-2026-11&amp;utm_content=rail" target="_blank" rel="noopener">Investor email alerts <span class="arw" aria-hidden="true">-&gt;</span></a>
-    </div>
-  </aside>
 
-  <div class="col">
 
 <section id="model" class="sec-white band" aria-labelledby="model-h">
   <div class="split2">
@@ -952,6 +911,7 @@ footer{background:var(--deep-2)}
     <div class="s-text right">
       <span class="eyebrow">08 &middot; Investors</span>
       <h2 id="inv-h">Follow TherapeuticsMD</h2>
+      <p class="inv-meta">Nasdaq: TXMD &middot; 11,574,362 shares of common stock outstanding at November 9, 2026 (<a href="https://www.sec.gov/Archives/edgar/data/25743/000121390026119697/ea0308826-10q_therapeutics.htm" target="_blank" rel="noopener">Form 10-Q cover</a>)</p>
       <ul class="acts">
         <li><a href="https://www.sec.gov/Archives/edgar/data/25743/000121390026119681/ea031220401ex99-1.htm" target="_blank" rel="noopener"><b>Read the Q3 2026 results</b><span>Release furnished on Form 8-K, Nov 13, 2026</span></a></li>
         <li><a href="https://www.sec.gov/Archives/edgar/data/25743/000121390026119697/ea0308826-10q_therapeutics.htm" target="_blank" rel="noopener"><b>Explore the quarterly report</b><span>Form 10-Q for the quarter ended Sep 30, 2026</span></a></li>
@@ -966,9 +926,6 @@ footer{background:var(--deep-2)}
     </div>
   </div>
 </section>
-
-  </div>
-</div>
 
 </main>
 
